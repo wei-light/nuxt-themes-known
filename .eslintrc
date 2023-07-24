@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "extends": "@antfu",
+  "rules": {
+    "curly": "off",
+    "antfu/if-newline": "off"
+  }
+}

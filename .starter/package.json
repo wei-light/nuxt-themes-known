@@ -1,0 +1,16 @@
+{
+  "name": "known-starter",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^3.6.2",
+    "nuxt-themes-known": "workspace:*"
+  }
+}
