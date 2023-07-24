@@ -1,0 +1,23 @@
+:root {
+  --color-plain-0: 255, 255, 255;
+  --color-plain-50: 245, 246, 247;
+  --color-plain-100: 230, 231, 232;
+  --color-plain-150: 220, 221, 222;
+  --color-plain-200: 205, 206, 207;
+  --color-plain-250: 195, 196, 197;
+  --color-plain-300: 180, 181, 182;
+  --color-plain-350: 170, 171, 172;
+  --color-plain-400: 155, 156, 157;
+  --color-plain-450: 145, 146, 147;
+  --color-plain-500: 130, 131, 132;
+  --color-plain-550: 120, 121, 122;
+  --color-plain-600: 105, 106, 107;
+  --color-plain-650: 95, 96, 97;
+  --color-plain-700: 80, 81, 82;
+  --color-plain-750: 70, 71, 72;
+  --color-plain-800: 55, 56, 57;
+  --color-plain-850: 45, 46, 47;
+  --color-plain-900: 30, 31, 32;
+  --color-plain-950: 20, 21, 22;
+  --color-plain-1000: 5, 6, 7;
+}

@@ -6,6 +6,24 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@unocss/nuxt',
+    '@nuxtjs/color-mode',
+  ],
+  css: [
+    '@unocss/reset/tailwind.css',
+    resolve('./assets/css/vars.css'),
+    resolve('./assets/css/global.css'),
+  ],
+  components: [
+    {
+      prefix: '',
+      path: resolve('./components/app'),
+      global: true,
+    },
+    {
+      prefix: '',
+      path: resolve('./components/base'),
+      global: true,
+    },
   ],
   typescript: {
     includeWorkspace: true,
@@ -15,5 +33,9 @@ export default defineNuxtConfig({
   },
   unocss: {
     configFile: resolve('./uno.config.ts'),
+  },
+  colorMode: {
+    preference: 'light',
+    classSuffix: '',
   },
 })
