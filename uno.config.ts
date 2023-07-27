@@ -6,7 +6,12 @@ export default defineConfig({
   presets: [
     presetWind(),
     presetAttributify(),
-    presetIcons(),
+    presetIcons({
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
+    }),
   ],
   content: {
     filesystem: ['content/**/*.md'],

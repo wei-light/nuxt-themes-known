@@ -22,6 +22,11 @@ export default defineNuxtConfig({
     },
     {
       prefix: '',
+      path: resolve('./components/docs'),
+      global: true,
+    },
+    {
+      prefix: '',
       path: resolve('./components/base'),
       global: true,
     },
@@ -31,6 +36,12 @@ export default defineNuxtConfig({
   },
   content: {
     documentDriven: true,
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+      },
+    },
   },
   unocss: {
     configFile: resolve('./uno.config.ts'),

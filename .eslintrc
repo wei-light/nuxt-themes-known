@@ -3,6 +3,7 @@
   "extends": "@antfu",
   "rules": {
     "curly": "off",
-    "antfu/if-newline": "off"
+    "antfu/if-newline": "off",
+    "antfu/top-level-function": "off"
   }
 }
