@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const { isOpen, open, close } = useAside()
+
+const route = useRoute()
+watch(() => route.path, close)
 </script>
 
 <template>

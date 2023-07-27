@@ -34,13 +34,15 @@ const current = computed(() => spaces.value.find(lib => route.path.startsWith(li
         class="absolute w-63 p-1 mt-1.5 bg-PLAIN-0 border border-PLAIN-100 rounded-md origin-top-left z-9999"
         dark="bg-PLAIN-950 border-PLAIN-850"
       >
-        <MenuItem v-for="space of spaces" :key="space._path">
-          <NuxtLink
-            :to="space._path"
-            class="block p-2 text-sm rounded-md hover:bg-PLAIN-100/50 dark:hover:bg-PLAIN-900/70"
-            :class="{ 'text-blue-500': route.path.startsWith(space._path) }"
-          >
-            {{ space.title }}
+        <MenuItem v-for="space of spaces" :key="space._path" v-slot="{ close }">
+          <NuxtLink :to="space._path">
+            <span
+              class="block p-2 text-sm rounded-md hover:bg-PLAIN-100/50 dark:hover:bg-PLAIN-900/70"
+              :class="{ 'text-blue-500': route.path.startsWith(space._path) }"
+              @click="close()"
+            >
+              {{ space.title }}
+            </span>
           </NuxtLink>
         </MenuItem>
       </MenuItems>
