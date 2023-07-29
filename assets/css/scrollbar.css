@@ -1,0 +1,33 @@
+:root {
+  --scrollbar-thumb-color: #d9d9d9;
+  --scrollbar-thumb-hover-color: #bbb;
+  --scrollbar-track-color: #fff;
+
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable both;
+}
+
+html.dark {
+  --scrollbar-thumb-color: #363636;
+  --scrollbar-thumb-hover-color: #525252;
+  --scrollbar-track-color: #171717;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover-color);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color);
+}

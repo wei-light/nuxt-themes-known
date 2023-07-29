@@ -9,12 +9,12 @@ const { hasAside } = useAside()
 <template>
   <aside
     v-if="hasAside"
-    class="fixed top-0 bottom-0 left-0 w-68 bg-PLAIN-50 border-r border-PLAIN-100 -translate-x-full transition-transform duration-200 z-999"
+    class="fixed top-0 bottom-0 left-0 w-68 bg-PLAIN-50 border-r border-PLAIN-100 -translate-x-full transition-transform duration-200 box-content z-999"
     :class="{ 'translate-x-0': open }"
     lg="translate-x-0"
-    dark="bg-PLAIN-950 border-PLAIN-850"
+    dark="bg-PLAIN-950 border-PLAIN-900"
   >
-    <div class="flex items-center h-16 pl-2.5">
+    <div class="flex items-center h-16 pl-2">
       <DocsAsideSpaceSelect />
     </div>
     <div class="px-2 mb-2">

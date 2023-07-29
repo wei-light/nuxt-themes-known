@@ -12,7 +12,7 @@ const current = computed(() => spaces.value.find(lib => route.path.startsWith(li
   <Menu v-slot="{ open }" as="div" class="relative">
     <div>
       <MenuButton
-        class="inline-flex items-center gap-x-1 px-2 py-1 rounded-md hover:bg-PLAIN-100/80 dark:hover:bg-PLAIN-900/90"
+        class="inline-flex items-center gap-x-1 px-2.5 py-1 rounded-md hover:bg-PLAIN-100/80 dark:hover:bg-PLAIN-900/90"
         :class="{ 'bg-PLAIN-100/80 dark:bg-PLAIN-900/90': open }"
       >
         <span class="text-sm font-bold">
@@ -31,8 +31,8 @@ const current = computed(() => spaces.value.find(lib => route.path.startsWith(li
       leave-to-class="transform scale-90 opacity-0"
     >
       <MenuItems
-        class="absolute w-63 p-1 mt-1.5 bg-PLAIN-0 border border-PLAIN-100 rounded-md origin-top-left z-9999"
-        dark="bg-PLAIN-950 border-PLAIN-850"
+        class="absolute w-64 p-1 mt-1.5 bg-PLAIN-0 border border-PLAIN-100 rounded-md origin-top-left z-9999"
+        dark="bg-PLAIN-950 border-PLAIN-900"
       >
         <MenuItem v-for="space of spaces" :key="space._path" v-slot="{ close }">
           <NuxtLink :to="space._path">

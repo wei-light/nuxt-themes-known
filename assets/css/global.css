@@ -1,3 +1,4 @@
 body {
   @apply text-base text-PLAIN-800 bg-PLAIN-0 dark:(text-PLAIN-200 bg-PLAIN-1000);
+  -webkit-tap-highlight-color: transparent;
 }
