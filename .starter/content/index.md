@@ -11,7 +11,7 @@ sign: emm.. 暂时想不到写啥，想好再写
 ---
 ::
 
-::container{class="prose max-w-none mt-10"}
+::container{class="prose mt-10"}
 
 **👋 Hi，欢迎来到我的知识空间**
 

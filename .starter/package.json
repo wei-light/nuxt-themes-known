@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "nuxt": "^3.6.2",
     "nuxt-themes-known": "workspace:*"
   }
