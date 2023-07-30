@@ -7,26 +7,97 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex items-center">
-    <div
-      class="shrink-0 overflow-hidden h-16 w-16 rounded-full"
-      sm="h-20 w-20"
-      md="h-24 w-24"
-      lg="h-32 w-32"
-    >
-      <img
-        class="h-full w-full"
-        :src="avatar"
-        alt="user-avatar"
-      >
+  <div class="block-info">
+    <div class="avatar">
+      <img :src="avatar" alt="user-avatar">
     </div>
-    <div class="ml-6 md:ml-8 lg:ml-10">
-      <p class="text-lg font-bold sm:text-2xl">
+    <div class="info">
+      <p class="name">
         {{ name }}
       </p>
-      <p class="mt-0.5 line-clamp-1 text-[13px] opacity-60 sm:(mt-2 text-sm) md:mt-4 lg:mt-6">
+      <p class="sign">
         {{ sign }}
       </p>
     </div>
   </div>
 </template>
+
+<style scoped lang="postcss">
+.block-info {
+  display: flex;
+  align-items: center;
+
+  .avatar {
+    overflow: hidden;
+    flex-shrink: 0;
+    height: 64px;
+    width: 64px;
+    border-radius: 9999px;
+
+    @sm {
+      height: 80px;
+      width: 80px;
+    }
+
+    @md {
+      height: 96px;
+      width: 96px;
+    }
+
+    @lg {
+      height: 128px;
+      width: 128px;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .info {
+    margin-left: 24px;
+
+    @md {
+      margin-left: 32px;
+    }
+
+    @lg {
+      margin-left: 40px;
+    }
+
+    .name {
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 700;
+
+      @sm {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    .sign {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-top: 2px;
+      font-size: 13px;
+      opacity: 0.6;
+
+      @sm {
+        margin-top: 8px;
+        font-size: 14px;
+      }
+
+      @md {
+        margin-top: 16px;
+      }
+
+      @lg {
+        margin-top: 24px;
+      }
+    }
+  }
+}
+</style>

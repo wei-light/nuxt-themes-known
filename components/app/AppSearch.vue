@@ -4,7 +4,7 @@
 
 <template>
   <BaseButtonIcon
-    icon="i-ri-search-line"
-    class="p-2"
+    icon="ri:search-line"
+    :style="{ padding: '8px' }"
   />
 </template>

@@ -1,8 +1,14 @@
+<script setup lang="ts">
+const colorMode = useColorMode()
+
+const isDark = computed(() => colorMode.preference === 'dark')
+</script>
+
 <template>
   <BaseButtonIcon
-    class="p-2"
-    @click="$colorMode.preference = $colorMode.preference === 'light' ? 'dark' : 'light'"
+    :style="{ padding: '8px' }"
+    @click="$colorMode.preference = isDark ? 'light' : 'dark'"
   >
-    <i class="i-ri-sun-line dark:i-ri-moon-line" />
+    <Icon :name="isDark ? 'ri:moon-line' : 'ri:sun-line' " />
   </BaseButtonIcon>
 </template>

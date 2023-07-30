@@ -5,11 +5,11 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
-    '@unocss/nuxt',
     '@nuxtjs/color-mode',
+    'pinceau/nuxt',
+    'nuxt-icon',
   ],
   css: [
-    '@unocss/reset/tailwind.css',
     resolve('./assets/css/vars.css'),
     resolve('./assets/css/prose.css'),
     resolve('./assets/css/scrollbar.css'),
@@ -43,9 +43,6 @@ export default defineNuxtConfig({
         dark: 'github-dark',
       },
     },
-  },
-  unocss: {
-    configFile: resolve('./uno.config.ts'),
   },
   colorMode: {
     preference: 'light',

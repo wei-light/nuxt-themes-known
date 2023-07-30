@@ -9,36 +9,26 @@ const current = computed(() => spaces.value.find(lib => route.path.startsWith(li
 </script>
 
 <template>
-  <Menu v-slot="{ open }" as="div" class="relative">
+  <Menu v-slot="{ open }" as="div" class="menu-container">
     <div>
       <MenuButton
-        class="inline-flex items-center gap-x-1 px-2.5 py-1 rounded-md hover:bg-PLAIN-100/80 dark:hover:bg-PLAIN-900/90"
-        :class="{ 'bg-PLAIN-100/80 dark:bg-PLAIN-900/90': open }"
+        class="menu-btn"
+        :class="{ focus: open }"
       >
-        <span class="text-sm font-bold">
+        <span class="text">
           {{ current?.title }}
         </span>
-        <i class="i-iconamoon-arrow-down-2-fill text-PLAIN-600 dark:text-PLAIN-400" />
+        <Icon name="iconamoon:arrow-down-2-fill" class="icon" />
       </MenuButton>
     </div>
 
-    <transition
-      enter-active-class="transition duration-100 ease-out"
-      enter-from-class="transform scale-90 opacity-0"
-      enter-to-class="transform scale-100 opacity-100"
-      leave-active-class="transition duration-75 ease-in"
-      leave-from-class="transform scale-100 opacity-100"
-      leave-to-class="transform scale-90 opacity-0"
-    >
-      <MenuItems
-        class="absolute w-64 p-1 mt-1.5 bg-PLAIN-0 border border-PLAIN-100 rounded-md origin-top-left z-9999"
-        dark="bg-PLAIN-950 border-PLAIN-900"
-      >
+    <Transition name="scale">
+      <MenuItems class="menu-items">
         <MenuItem v-for="space of spaces" :key="space._path" v-slot="{ close }">
           <NuxtLink :to="space._path">
             <span
-              class="block p-2 text-sm rounded-md hover:bg-PLAIN-100/50 dark:hover:bg-PLAIN-900/70"
-              :class="{ 'text-blue-500': route.path.startsWith(space._path) }"
+              class="menu-item"
+              :class="{ active: route.path.startsWith(space._path) }"
               @click="close()"
             >
               {{ space.title }}
@@ -46,6 +36,72 @@ const current = computed(() => spaces.value.find(lib => route.path.startsWith(li
           </NuxtLink>
         </MenuItem>
       </MenuItems>
-    </transition>
+    </Transition>
   </Menu>
 </template>
+
+<style scoped lang="postcss">
+.menu-container {
+  position: relative;
+
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+
+    &:hover,
+    &.focus {
+      background-color: var(--fill-hover);
+    }
+
+    .text {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .icon {
+      color: var(--color-grey-600);
+    }
+  }
+
+  .menu-items {
+    position: absolute;
+    width: calc(var(--known-aside-width) - 16px);
+    padding: 4px;
+    margin-top: 6px;
+    background-color: var(--bg-body-overlay);
+    border: 1px solid var(--color-grey-200);
+    border-radius: 6px;
+    transform-origin: top left;
+    z-index: 9999;
+
+    .menu-item {
+      display: block;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+
+      &.active {
+        color: var(--color-blue-600);
+      }
+
+      &:hover {
+        background-color: var(--fill-hover);
+      }
+    }
+  }
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.1s ease;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
+}
+</style>

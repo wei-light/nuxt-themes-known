@@ -35,8 +35,13 @@
   </svg>
 </template>
 
-<style scoped>
+<style scoped lang="postcss">
 svg {
-  @apply h-6 w-auto sm:h-7;
+  height: 24px;
+  width: auto;
+
+  @sm {
+    height: 28px;
+  }
 }
 </style>

@@ -7,7 +7,6 @@
   --md-pre-bg: #f5f7f9;
 
   font-size: 1rem;
-  max-width: 65ch;
   line-height: 1.75;
   color: var(--md-color);
 }

@@ -3,11 +3,30 @@ const { tree } = useKnown()
 </script>
 
 <template>
-  <div class="flex items-center gap-x-1.5 h-8 px-2">
-    <i class="i-mingcute-directory-line" />
-    <span class="text-sm">目录</span>
+  <div class="docs-aside-tree">
+    <div class="header">
+      <Icon name="mingcute:directory-line" />
+      <span>目录</span>
+    </div>
+    <nav>
+      <DocsAsideTreeItem :tree="tree" />
+    </nav>
   </div>
-  <nav class="mt-0.5">
-    <DocsAsideTreeItem :tree="tree" />
-  </nav>
 </template>
+
+<style scoped lang=postcss>
+.docs-aside-tree {
+  .header {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    height: 32px;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    span {
+      font-size: 14px;
+    }
+  }
+}
+</style>

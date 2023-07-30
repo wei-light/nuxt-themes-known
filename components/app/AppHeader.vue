@@ -5,19 +5,57 @@ const { hasAside } = useAside()
 </script>
 
 <template>
-  <header class="fixed inset-x-0 top-0 flex items-center justify-between h-16 px-6 bg-PLAIN-0 z-9 dark:bg-PLAIN-1000">
-    <div class="inline-flex items-center gap-x-3">
+  <header>
+    <div class="left-side">
       <BaseButtonIcon
         v-if="hasAside"
-        icon="i-mingcute-menu-line"
-        class="p-2 -ml-2 lg:hidden"
+        icon="mingcute:menu-line"
+        class="menu"
         @click="emit('open-menu')"
       />
       <AppHeaderLogo />
     </div>
-    <div class="inline-flex items-center -mr-2">
+    <div class="right-side">
       <AppSearch />
       <AppThemeSelect />
     </div>
   </header>
 </template>
+
+<style scoped lang="postcss">
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--known-header-height);
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: var(--bg-body);
+  z-index: 9;
+
+  .left-side {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 12px;
+
+    .menu {
+      padding: 8px;
+      margin-left: -8px;
+
+      @lg {
+        display: none;
+      }
+    }
+  }
+
+  .right-side {
+    display: inline-flex;
+    align-items: center;
+    margin-right: -8px;
+  }
+}
+</style>

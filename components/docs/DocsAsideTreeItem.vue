@@ -37,26 +37,29 @@ const toggleCollapse = (link: NavigationItem) => (collapsedMap.value[link._path]
 </script>
 
 <template>
-  <ul class="space-y-0.5">
+  <ul class="docs-tree-container space-y-0.5">
     <li v-for="item of tree" :key="item._path">
       <component
         :is="item.children ? 'div' : NuxtLink"
         :to="item.children || item._path"
         :style="{ paddingLeft: `${depth * 24}px` }"
-        class="flex items-center gap-x-1 h-8 pr-2 rounded-md cursor-pointer hover:bg-PLAIN-100 dark:hover:bg-PLAIN-900"
-        active
+        class="tree-item"
         @click="item.children && toggleCollapse(item)"
       >
-        <div class="h-6 w-6 shrink-0">
+        <div class="toggle-btn-placeholder">
           <BaseButtonIcon
             v-if="item.children"
-            class="w-full h-full rounded-md transition-colors duration-300 hover:bg-PLAIN-200/60 dark:hover:bg-PLAIN-850"
+            class="btn"
             @click.stop="toggleCollapse(item)"
           >
-            <i class="i-ri-arrow-right-s-line text-PLAIN-550 text-sm transition-transform duration-300" :class="{ 'rotate-90': !isCollapsed(item) }" />
+            <Icon
+              name="ri:arrow-right-s-line"
+              class="icon"
+              :style="{ transform: `rotate(${!isCollapsed(item) ? '90' : 0}deg)` }"
+            />
           </BaseButtonIcon>
         </div>
-        <div class="line-clamp-1 text-sm">
+        <div class="text">
           {{ item.title }}
         </div>
       </component>
@@ -73,8 +76,56 @@ const toggleCollapse = (link: NavigationItem) => (collapsedMap.value[link._path]
   </ul>
 </template>
 
-<style scoped>
+<style scoped lang="postcss">
+.docs-tree-container {
+  .tree-item {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    height: 32px;
+    padding-right: 8px;
+    margin-top: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--fill-hover);
+    }
+
+    .toggle-btn-placeholder {
+      height: 24px;
+      width: 24px;
+      flex-shrink: 0;
+
+      .btn {
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        transition: background-color 0.2s linear;
+
+        &:hover {
+          background-color: rgb(var(--color-grey-300-raw), 0.7);
+        }
+
+        .icon {
+          color: var(--color-grey-500);
+          font-size: 14px;
+          transition: transform 0.2s linear;
+        }
+      }
+    }
+
+    .text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+  }
+}
+
 .router-link-active {
-  @apply text-blue-600 bg-blue-600/15 dark:(text-blue-400 bg-blue-400/15);
+  color: var(--color-blue-600);
+  background-color: rgb(var(--color-blue-600-raw), 0.15)!important;
 }
 </style>

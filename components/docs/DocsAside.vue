@@ -9,25 +9,84 @@ const { hasAside } = useAside()
 <template>
   <aside
     v-if="hasAside"
-    class="fixed top-0 bottom-0 left-0 w-68 bg-PLAIN-50 border-r border-PLAIN-100 -translate-x-full transition-transform duration-200 box-content z-999"
-    :class="{ 'translate-x-0': open }"
-    lg="translate-x-0"
-    dark="bg-PLAIN-950 border-PLAIN-900"
+    class="docs-aside"
+    :style="{ transform: `translateX(${open ? '0' : '-100%'})` }"
   >
-    <div class="flex items-center h-16 pl-2">
+    <div class="header-wrapper">
       <DocsAsideSpaceSelect />
     </div>
-    <div class="px-2 mb-2">
+    <div class="search-wrapper">
       <DocsAsideSearch />
     </div>
-    <div class="px-2">
-      <NuxtLink to="/" class="flex items-center gap-x-1.5 h-8 px-2 rounded-md hover:bg-PLAIN-100 dark:hover:bg-PLAIN-900">
-        <i class="i-ri-home-5-line" />
-        <span class="text-sm">首页</span>
+    <div class="home-link">
+      <NuxtLink to="/">
+        <Icon name="ri:home-5-line" />
+        <span>首页</span>
       </NuxtLink>
     </div>
-    <div class="px-2 mt-1">
+    <div class="tree-wrapper">
       <DocsAsideTree />
     </div>
   </aside>
 </template>
+
+<style scoped lang="postcss">
+.docs-aside {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--known-aside-width);
+  background-color: var(--bg-body-overlay);
+  border-right: 1px solid var(--color-grey-200);
+  transition: transform 0.2s ease-in;
+  box-sizing: content-box;
+  z-index: 999;
+
+  @lg {
+    transform: translateX(0)!important;
+  }
+
+  .header-wrapper {
+    display: flex;
+    align-items: center;
+    height: var(--known-header-height);
+    padding-left: 8px;
+  }
+
+  .search-wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .home-link {
+    padding-left: 8px;
+    padding-right: 8px;
+
+    a {
+      display: flex;
+      align-items: center;
+      column-gap: 6px;
+      height: 32px;
+      padding-left: 8px;
+      padding-right: 8px;
+      border-radius: 6px;
+
+      &:hover {
+        background-color: var(--fill-hover);
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .tree-wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 4px;
+  }
+}
+</style>
